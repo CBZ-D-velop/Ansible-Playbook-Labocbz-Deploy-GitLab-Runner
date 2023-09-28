@@ -1,0 +1,49 @@
+---
+- name: "Deploy Docker"
+  hosts: "{{ tower_env | default([]) }}:&DOCKER"
+  gather_facts: true
+  strategy: free
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+    - name: "Include labocbz.install_docker"
+      tags:
+        - "labocbz.install_docker"
+      vars:
+        install_docker_portainer: "{{ inv_install_docker_portainer }}"
+        install_docker_watchtower: "{{ inv_install_docker_watchtower }}"
+        install_docker_watchtower_poll_interval: "{{ inv_install_docker_watchtower_poll_interval }}"
+        install_docker_watchtower_cleanup: "{{ inv_install_docker_watchtower_cleanup }}"
+        install_docker_watchtower_include_restarting: "{{ inv_install_docker_watchtower_include_restarting }}"
+        install_docker_watchtower_include_stopped: "{{ inv_install_docker_watchtower_include_stopped }}"
+        install_docker_watchtower_no_restart: "{{ inv_install_docker_watchtower_no_restart }}"
+      ansible.builtin.include_role:
+        name: "labocbz.install_docker"
+
+- name: "Deploy GitLab Runner"
+  hosts: "{{ tower_env | default([]) }}:&RUNNERS"
+  gather_facts: true
+  strategy: free
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+    - name: "Include labocbz.install_gitlab_runner"
+      tags:
+        - "labocbz.install_gitlab_runner"
+      vars:
+        install_gitlab_runner_concurrent: "{{ inv_install_gitlab_runner_concurrent }}"
+        install_gitlab_runner_session_timeout: "{{ inv_install_gitlab_runner_session_timeout }}"
+        install_gitlab_runner_image: "{{ inv_install_gitlab_runner_image }}"
+        install_gitlab_runner_name: "{{ inv_install_gitlab_runner_name }}"
+        install_gitlab_runner_url: "{{ inv_install_gitlab_runner_url }}"
+        install_gitlab_runner_token: "{{ inv_install_gitlab_runner_token }}"
+        install_gitlab_runner_config_volume: "{{ inv_install_gitlab_runner_config_volume }}"
+        install_gitlab_runner_docker_tls_verify: "{{ inv_install_gitlab_runner_docker_tls_verify }}"
+        install_gitlab_runner_docker_image: "{{ inv_install_gitlab_runner_docker_image }}"
+      ansible.builtin.include_role:
+        name: "labocbz.install_gitlab_runner"
+

@@ -5,7 +5,7 @@
 
 - name: "labocbz.install_docker"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-Docker.git"
-  version: "3.0"
+  version: "4.0"
 
 - name: "labocbz.add_certificates"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Add-Certificates.git"
@@ -13,4 +13,4 @@
 
 - name: "labocbz.install_gitlab_runner"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-GitLab-Runner.git"
-  version: "1.0"
+  version: "2.0"

@@ -7,10 +7,4 @@ inv_install_docker_compose_version: "2.17.2"
 
 inv_install_docker_portainer: false
 
-inv_install_docker_watchtower: true
-inv_install_docker_watchtower_container_name: "watchtower"
-inv_install_docker_watchtower_poll_interval: 3600
-inv_install_docker_watchtower_cleanup: true
-inv_install_docker_watchtower_include_restarting: true
-inv_install_docker_watchtower_include_stopped: true
-inv_install_docker_watchtower_no_restart: true
+inv_install_docker_watchtower: false

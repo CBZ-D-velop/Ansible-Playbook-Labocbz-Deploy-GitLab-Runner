@@ -64,7 +64,7 @@
           var_handle_docker_clean_minute: "{{ inv_handle_docker_clean_minute | default('0') }}"
           var_handle_docker_clean_hour: "{{ inv_handle_docker_clean_hour | default('*/6') }}"
 
-      - name: "Creates a cron file under /etc/cron.d"
+      - name: "Create a cron file under /etc/cron.d"
         ansible.builtin.cron:
           cron_file: "{{ var_handle_docker_clean_cron_file }}"
           name: "Docker System Prune"
@@ -78,11 +78,12 @@
     - name: "Handler Docker No clean"
       when: not (inv_handle_docker_clean | default(false))
       block:
-      - name: "Set facts for cleaning jon"
-        ansible.builtin.set_fact:
-          var_handle_docker_clean_cron_file: "{{ inv_handle_docker_clean_cron_file | default('ansible_docker_system_prune') }}"
+        - name: "Set facts for cleaning jon"
+          ansible.builtin.set_fact:
+            var_handle_docker_clean_cron_file: "{{ inv_handle_docker_clean_cron_file | default('ansible_docker_system_prune') }}"
 
-        ansible.builtin.cron:
-          cron_file: "{{ var_handle_docker_clean_cron_file }}"
-          name: "Docker System Prune"
-          state: abstent
+        - name: "Remove a cron file under /etc/cron.d"
+          ansible.builtin.cron:
+            cron_file: "{{ var_handle_docker_clean_cron_file }}"
+            name: "Docker System Prune"
+            state: abstent

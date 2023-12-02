@@ -71,6 +71,16 @@ To install this playbook, just copy/import this playbook or raw file into your f
 # From inventory
 ---
 all vars from to put/from your inventory
+
+# Special for Docker cleaning (docker system prune)
+
+inv_handle_docker_clean: true
+
+inv_handle_docker_clean_cron_file: "ansible_docker_system_prune"
+inv_handle_docker_clean_weekday: "*"
+inv_handle_docker_clean_minute: "*"
+inv_handle_docker_clean_hour: "*/6"
+
 ```
 
 ```YAML
@@ -93,6 +103,10 @@ Here you can put your change to keep a trace of your work and decisions.
 * Molecule now use remote Docker image by Lord Robin Crombez
 * Molecule now use custom Docker image in CI/CD by env vars
 * New CICD with needs and optimization
+
+### 2023-12-02: Docker clean
+
+* Playbook can create or remove crontab job to handler a complete docker system prune
 
 ## Authors
 

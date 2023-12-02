@@ -1,4 +1,6 @@
 ---
+inv_install_gitlab_runner: true
+
 inv_install_gitlab_runner_concurrent: 5
 inv_install_gitlab_runner_session_timeout: 1800
 inv_install_gitlab_runner_image: "gitlab/gitlab-runner:latest"
@@ -8,3 +10,10 @@ inv_install_gitlab_runner_token: "XXXXXXX"
 
 inv_install_gitlab_runner_config_volume: "{{ inv_install_gitlab_runner_name }}_home"
 inv_install_gitlab_runner_docker_image: "debian:11"
+
+inv_handle_docker_clean: true
+
+inv_handle_docker_clean_cron_file: "ansible_docker_system_prune"
+inv_handle_docker_clean_weekday: "*"
+inv_handle_docker_clean_minute: "*"
+inv_handle_docker_clean_hour: "*/6"

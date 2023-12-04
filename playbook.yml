@@ -31,6 +31,11 @@
             install_docker_watchtower_include_stopped: "{{ inv_install_docker_watchtower_include_stopped }}"
             install_docker_watchtower_no_restart: "{{ inv_install_docker_watchtower_no_restart }}"
             install_docker_portainer_address: "{{ inv_install_docker_portainer_address }}"
+            install_docker_handle_clean: "{{ inv_install_docker_handle_clean }}"
+            install_docker_clean_cron_file: "{{ inv_install_docker_clean_cron_file }}"
+            install_docker_clean_weekday: "{{ inv_install_docker_clean_weekday }}"
+            install_docker_clean_minute: "{{ inv_install_docker_clean_minute }}"
+            install_docker_clean_hour: "{{ inv_install_docker_clean_hour }}"
           ansible.builtin.include_role:
             name: "labocbz.install_docker"
 
@@ -52,38 +57,3 @@
             install_gitlab_runner_docker_image: "{{ inv_install_gitlab_runner_docker_image }}"
           ansible.builtin.include_role:
             name: "labocbz.install_gitlab_runner"
-
-
-    - name: "Handler Docker clean"
-      when: inv_handle_docker_clean | default(false)
-      block:
-      - name: "Set facts for cleaning jon"
-        ansible.builtin.set_fact:
-          var_handle_docker_clean_cron_file: "{{ inv_handle_docker_clean_cron_file | default('ansible_docker_system_prune') }}"
-          var_handle_docker_clean_weekday: "{{ inv_handle_docker_clean_weekday | default('*') }}"
-          var_handle_docker_clean_minute: "{{ inv_handle_docker_clean_minute | default('0') }}"
-          var_handle_docker_clean_hour: "{{ inv_handle_docker_clean_hour | default('*/6') }}"
-
-      - name: "Create a cron file under /etc/cron.d"
-        ansible.builtin.cron:
-          cron_file: "{{ var_handle_docker_clean_cron_file }}"
-          name: "Docker System Prune"
-          weekday: "{{ var_handle_docker_clean_weekday }}"
-          minute: "{{ var_handle_docker_clean_minute }}"
-          hour: "{{ var_handle_docker_clean_hour }}"
-          user: root
-          job: "docker system prune --all --volumes --force"
-          state: present
-
-    - name: "Handler Docker No clean"
-      when: not (inv_handle_docker_clean | default(false))
-      block:
-        - name: "Set facts for cleaning jon"
-          ansible.builtin.set_fact:
-            var_handle_docker_clean_cron_file: "{{ inv_handle_docker_clean_cron_file | default('ansible_docker_system_prune') }}"
-
-        - name: "Remove a cron file under /etc/cron.d"
-          ansible.builtin.cron:
-            cron_file: "{{ var_handle_docker_clean_cron_file }}"
-            name: "Docker System Prune"
-            state: abstent

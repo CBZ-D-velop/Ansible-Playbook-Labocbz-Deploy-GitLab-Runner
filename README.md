@@ -108,6 +108,11 @@ Here you can put your change to keep a trace of your work and decisions.
 
 * Playbook can create or remove crontab job to handler a complete docker system prune
 
+### 2023-12-18: Docker certs
+
+* Added the install Docker role, so Docker will be installed
+* Handler certs for Docker / Portainers 
+
 ## Authors
 
 * Lord Robin Crombez

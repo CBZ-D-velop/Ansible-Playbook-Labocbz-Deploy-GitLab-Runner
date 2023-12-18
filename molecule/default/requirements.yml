@@ -1,7 +1,7 @@
 ---
 - name: "labocbz.prepare_host"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Prepare-Host.git"
-  version: "2.0"
+  version: "2.1"
 
 - name: "labocbz.install_docker"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-Docker.git"
@@ -14,3 +14,7 @@
 - name: "labocbz.install_gitlab_runner"
   src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-GitLab-Runner.git"
   version: "2.0"
+
+- name: "labocbz.install_docker"
+  src: "https://github.com/CBZ-D-velop/Ansible-Role-Labocbz-Install-Docker.git"
+  version: "3.0"

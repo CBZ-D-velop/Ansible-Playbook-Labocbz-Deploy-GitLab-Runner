@@ -62,6 +62,7 @@
             install_docker_clean_weekday: "{{ inv_install_docker_clean_weekday }}"
             install_docker_clean_minute: "{{ inv_install_docker_clean_minute }}"
             install_docker_clean_hour: "{{ inv_install_docker_clean_hour }}"
+            install_docker_insecure_registries: "{{ inv_install_docker_insecure_registries }}"
           ansible.builtin.include_role:
             name: "labocbz.install_docker"
 

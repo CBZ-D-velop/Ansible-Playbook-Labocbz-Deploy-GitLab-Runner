@@ -1,12 +1,15 @@
 ---
 inv_install_gitlab_runner: true
 
-inv_install_gitlab_runner_concurrent: 5
-inv_install_gitlab_runner_session_timeout: 1800
-inv_install_gitlab_runner_image: "gitlab/gitlab-runner:latest"
-inv_install_gitlab_runner_name: "gitlab-runners"
-inv_install_gitlab_runner_url: "https://gitlab.com/"
-inv_install_gitlab_runner_token: "XXXXXXX"
+inv_install_gitlab_runner__concurrent: 10
+inv_install_gitlab_runner__session_timeout: 3600
+inv_install_gitlab_runner__image: "gitlab/gitlab-runner:latest"
+inv_install_gitlab_runner__name: "gitlab-runner-TEST"
+inv_install_gitlab_runner__url: "https://gitlab.com/"
+inv_install_gitlab_runner__token: "XXXXXXX"
+inv_install_gitlab_runner__force_register: false
+inv_install_gitlab_runner__docker_privileged: true
 
-inv_install_gitlab_runner_config_volume: "{{ inv_install_gitlab_runner_name }}_home"
-inv_install_gitlab_runner_docker_image: "debian:11"
+inv_install_gitlab_runner__config_volume: "{{ inv_install_gitlab_runner__name }}-home"
+inv_install_gitlab_runner__docker_image: "debian:11"
+inv_install_gitlab_runner__pull_policy: "if-not-present"

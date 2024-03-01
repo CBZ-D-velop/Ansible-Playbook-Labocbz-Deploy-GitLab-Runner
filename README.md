@@ -113,6 +113,15 @@ Here you can put your change to keep a trace of your work and decisions.
 * Added the install Docker role, so Docker will be installed
 * Handler certs for Docker / Portainers 
 
+### 2024-02-24: Fix and CI
+
+* Added support for new CI base
+* Edit all vars with __
+* Tested and validated on Docker DIND
+* Removed docker socket
+* Tested and validated on LOCAL with REAL Token, but removed for tests
+* Removed handling for Portainer and docker, playbook is not about deploying Portainer
+
 ## Authors
 
 * Lord Robin Crombez

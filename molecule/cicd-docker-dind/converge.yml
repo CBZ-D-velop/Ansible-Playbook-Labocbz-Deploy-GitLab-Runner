@@ -2,4 +2,6 @@
 - name: "Include labocbz.deploy_gitlab_runner playbook"
   tags:
       - "labocbz.deploy_gitlab_runner"
+  vars:
+    tower_env: "cicd-docker-dind"
   ansible.builtin.import_playbook: "../../playbook.yml"

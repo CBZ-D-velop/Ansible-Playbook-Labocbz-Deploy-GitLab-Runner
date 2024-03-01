@@ -121,6 +121,7 @@ Here you can put your change to keep a trace of your work and decisions.
 * Removed docker socket
 * Tested and validated on LOCAL with REAL Token, but removed for tests
 * Removed handling for Portainer and docker, playbook is not about deploying Portainer
+* Added SonarQube
 
 ## Authors
 

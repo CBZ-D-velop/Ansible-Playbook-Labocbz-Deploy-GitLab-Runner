@@ -25,7 +25,7 @@ platforms:
     cgroup_manager: "cgroupfs"
     storage_driver: "overlay2"
     networks:
-      - name: "molecule-default-deploy-gitlab-runner"
+      - name: "molecule-cicd-local-deploy-gitlab-runner"
 
 provisioner:
   name: "ansible"

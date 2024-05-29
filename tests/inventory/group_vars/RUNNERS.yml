@@ -1,5 +1,5 @@
 ---
-inv_install_gitlab_runner: true
+inv_install_gitlab_runner: false
 
 inv_install_gitlab_runner__concurrent: 10
 inv_install_gitlab_runner__session_timeout: 3600

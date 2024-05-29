@@ -23,7 +23,6 @@ An Ansible playbook to install and configure Docker, docker-compose and deploy a
 You have to run multiples tests. *tests with an # are mandatory*
 
 ```MARKDOWN
-# lint
 # syntax
 # converge
 # idempotence
@@ -48,7 +47,6 @@ yamllint -c ./.yamllint .
 ansible-lint --config=./.ansible-lint .
 
 # Execute and test your playbook
-molecule lint
 molecule create
 molecule list
 molecule converge
@@ -111,7 +109,7 @@ Here you can put your change to keep a trace of your work and decisions.
 ### 2023-12-18: Docker certs
 
 * Added the install Docker role, so Docker will be installed
-* Handler certs for Docker / Portainers 
+* Handler certs for Docker / Portainers
 
 ### 2024-02-24: Fix and CI
 
@@ -122,6 +120,14 @@ Here you can put your change to keep a trace of your work and decisions.
 * Tested and validated on LOCAL with REAL Token, but removed for tests
 * Removed handling for Portainer and docker, playbook is not about deploying Portainer
 * Added SonarQube
+
+### 2024-05-19: New CI
+
+* Added Markdown lint to the CICD
+* Rework all Docker images
+* Change CICD vars convention
+* New workers
+* Removed all automation based on branch
 
 ## Authors
 

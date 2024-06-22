@@ -42,6 +42,7 @@
             install_docker__clean_minute: "{{ inv_install_docker__clean_minute }}"
             install_docker__clean_hour: "{{ inv_install_docker__clean_hour }}"
             install_docker__insecure_registries: "{{ inv_install_docker__insecure_registries }}"
+            install_docker__custom_lib_path: "{{ inv_install_docker__custom_lib_path }}"
           ansible.builtin.include_role:
             name: "labocbz.install_docker"
 
